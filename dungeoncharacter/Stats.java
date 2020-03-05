@@ -14,6 +14,9 @@ public class Stats {
 		setChanceToHit(chanceToHit);
 		setDamageVariance(minDamage,maxDamage);
 		setChanceToBlock(chanceToBlock);
+		
+		setHealVariance(0,0);
+		setChanceToHeal(0.0);
 	} //end of Hero Stats constructor
 	
 	public Stats(final int healthPoints, final int attackSpeed, final double chanceToHit, final int minDamage, final int maxDamage, final double chanceToHeal, final int minHeal, final int maxHeal) {
@@ -23,6 +26,8 @@ public class Stats {
 		setDamageVariance(minDamage,maxDamage);
 		setChanceToHeal(chanceToHeal);
 		setHealVariance(minHeal,maxHeal);
+		
+		setChanceToBlock(0.0);
 	}  //end of Monster Stats constructor
 	
 	public void setHP(final int healthPoints) { 
