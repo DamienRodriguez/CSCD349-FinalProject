@@ -27,12 +27,24 @@ public abstract class DungeonCharacter implements Attack {
 	public void setCurrentHP() {
 		this.currentHP = stats.getHP();
 	}
+   
+   public String getName() {
+      return this.name;
+   }
+   
+   public int getCurrentHP() {
+      return this.currentHP;
+   }
+   
+   public Stats getStats() {
+      return this.stats;
+   }
 	
-	private void addHP(final int hp) {
+	public void addHP(final int hp) {
 		this.currentHP += hp;
 	}
 	
-	private void subHP(final int hp) {
+	public void subHP(final int hp) {
 		this.currentHP -= hp;
 	}
 	
@@ -40,16 +52,18 @@ public abstract class DungeonCharacter implements Attack {
 	
 		boolean canAttack = false;
 		int damage = 0;
+      int[] dmgVar = this.stats.getDamageVariance();
 		
 		canAttack = Math.random() <= this.stats.getChanceToHit();
 		
 		if(canAttack) {
-			System.out.println(this.getName() + "'s attack connected with the " + opponent.getName();
-			damage = (int)(Math.random() * (damageMax - damageMin + 1)) + damageMin ;
+			System.out.println(this.getName() + "'s attack connected with the " + opponent.getName());
+			damage = (int)(Math.random() * (dmgVar[0] - dmgVar[1] + 1)) + dmgVar[0];
 			opponent.subHP(damage);
+         System.out.println();
 			
 		} else {
-			System.out.println(this.getName() + "'s attack failed to connect with the " + opponent.getName();
+			System.out.println(this.getName() + "'s attack failed to connect with the " + opponent.getName());
 			System.out.println();
 		}
 	}
