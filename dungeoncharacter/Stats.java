@@ -78,4 +78,19 @@ public class Stats {
 	public double getChanceToBlock() { 
 		return this.chanceToBlock; 
 	}
+   
+   
+   //This needs a better design pattern solution
+   public static Stats getWarriorStats() {
+      return new Stats(125, 4, .8, 35, 60, .2);
+   }
+   
+   public static Stats getSorcressStats() {
+      return new Stats(75, 5, .7, 25, 50, .3);
+   }
+   
+   public static Stats getThiefStats() {
+      return new Stats(75, 6, .8, 20, 40, .5);
+   }
+   
 }
