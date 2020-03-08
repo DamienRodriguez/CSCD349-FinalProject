@@ -5,18 +5,15 @@ public class Thief extends Hero {
       super(name, Stats.getThiefStats());
    }
    
-   public void crushingBlow(final DungeonCharacter opponent) {
-      int damage = 0;
-      
-      if(Math.random() <= .4) {
-         damage =  (int) (Math.random() * 76) + 100;
-         System.out.println(super.getName() + " lands a CRUSHING BLOW for " + damage + " damage!");
-         opponent.subHP(damage);
-         System.out.println();
+   public void sneakAttack(final DungeonCharacter opponent) {
+      double surprise = Math.random();
+      if (surprise <= .4) {
+         System.out.println("Surprise attack was successful!\n" + getName() + " gets an additional turn.");
+         super.setNumTurns(super.getNumTurns() + 1);
+         attack(opponent);
       }
-      else {
-            System.out.println(getName() + " failed to land a crushing blow");
-            System.out.println();
+      else if (surprise >= .9) {
+         System.out.println("Uh oh! " + opponent.getName() + " saw you and blocked your attack!");
       }
    }
    
@@ -34,7 +31,7 @@ public class Thief extends Hero {
 
         do {
             System.out.println("1. Attack Opponent");
-            System.out.println("2. Crushing Blow on Opponent");
+            System.out.println("2. Attempt a sneak attack");
             System.out.print("Choose an option: ");
             choice = kb.nextInt();
 
@@ -42,7 +39,7 @@ public class Thief extends Hero {
                this.attack(opponent);
             }
             else if (choice == 2) {
-               this.crushingBlow(opponent);
+               this.sneakAttack(opponent);
             }
             else {
                System.out.println("invalid choice!");

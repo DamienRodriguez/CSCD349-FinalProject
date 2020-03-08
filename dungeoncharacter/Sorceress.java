@@ -5,25 +5,22 @@ public class Sorceress extends Hero {
       super(name, Stats.getSorceressStats());
    }
    
-   public void () {
+   public void heal() {
         int hp;
-
         int MAX_ADD = 50;
         int MIN_ADD = 25;
+        
         hp = (int) (Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
-        addHitPoints(hPoints);
-        System.out.println(getName() + " added [" + hPoints + "] points.\n"
-                + "Total hit points remaining are: "
-                + getHitPoints());
+        super.addHP(hp);
+        System.out.println(super.getName() + " added [" + hp + "] points.\n" + "Total hit points remaining are: " + super.getStats().getHP());
         System.out.println();
 
     }
    
    public void attack(DungeonCharacter opponent) {
-        System.out.println(super.getName() + " swings a mighty sword at " + opponent.getName() + ":");
+        System.out.println(super.getName() + " casts a spell of fireball at " + opponent.getName() + ":");
         super.attack(opponent);
     }
-
 
    public void battleChoices(DungeonCharacter opponent) {
         Scanner kb = new Scanner(System.in);
@@ -33,7 +30,7 @@ public class Sorceress extends Hero {
 
         do {
             System.out.println("1. Attack Opponent");
-            System.out.println("2. Crushing Blow on Opponent");
+            System.out.println("2. Cast Heal");
             System.out.print("Choose an option: ");
             choice = kb.nextInt();
 
@@ -41,7 +38,7 @@ public class Sorceress extends Hero {
                this.attack(opponent);
             }
             else if (choice == 2) {
-               this.crushingBlow(opponent);
+               this.heal();
             }
             else {
                System.out.println("invalid choice!");

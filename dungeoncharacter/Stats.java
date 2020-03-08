@@ -85,7 +85,7 @@ public class Stats {
       return new Stats(125, 4, .8, 35, 60, .2);
    }
    
-   public static Stats getSorcressStats() {
+   public static Stats getSorceressStats() {
       return new Stats(75, 5, .7, 25, 50, .3);
    }
    
