@@ -7,14 +7,12 @@ public class Sorceress extends Hero {
    
    public void heal() {
         int hp;
-        int MAX_ADD = 50;
-        int MIN_ADD = 25;
+        int[] healVariance = super.getStats().getHealVariance();
         
-        hp = (int) (Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
+        hp = (int) (Math.random() * (healVariance[1] - healVariance[0] + 1)) + healVariance[0];
         super.addHP(hp);
-        System.out.println(super.getName() + " added [" + hp + "] points.\n" + "Total hit points remaining are: " + super.getStats().getHP());
+        System.out.println(super.getName() + " added [" + hp + "] points.\n" + "Total hit points remaining are: " + super.getStats().getCurrentHP());
         System.out.println();
-
     }
    
    public void attack(DungeonCharacter opponent) {

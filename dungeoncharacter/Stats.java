@@ -8,28 +8,16 @@ public class Stats {
 	private double chanceToHeal;
 	private int minHeal, maxHeal;
 	
-	public Stats(final int healthPoints, final int attackSpeed, final double chanceToHit, final int minDamage, final int maxDamage, final double chanceToBlock) { 
-		setHP(healthPoints);
+   public Stats(final int healthPoints, final int attackSpeed, final double chanceToHit, final int minDamage, final int maxDamage, final double changeToBlock, final double chanceToHeal, final int minHeal, final int maxHeal) {
+      setHP(healthPoints);
 		setAS(attackSpeed);
 		setChanceToHit(chanceToHit);
 		setDamageVariance(minDamage,maxDamage);
 		setChanceToBlock(chanceToBlock);
-		
-		setHealVariance(0,0);
-		setChanceToHeal(0.0);
-	} //end of Hero Stats constructor
-	
-	public Stats(final int healthPoints, final int attackSpeed, final double chanceToHit, final int minDamage, final int maxDamage, final double chanceToHeal, final int minHeal, final int maxHeal) {
-		setHP(healthPoints);
-		setAS(attackSpeed);
-		setChanceToHit(chanceToHit);
-		setDamageVariance(minDamage,maxDamage);
-		setChanceToHeal(chanceToHeal);
+      setChanceToHeal(chanceToHeal);
 		setHealVariance(minHeal,maxHeal);
-		
-		setChanceToBlock(0.0);
-	}  //end of Monster Stats constructor
-	
+   }
+   
 	public void setHP(final int healthPoints) { 
 		this.healthPoints = healthPoints; 
 	}
@@ -82,15 +70,26 @@ public class Stats {
    
    //This needs a better design pattern solution
    public static Stats getWarriorStats() {
-      return new Stats(125, 4, .8, 35, 60, .2);
+      return new Stats(125, 4, .8, 35, 60, .2, 0.0, 0, 0);
    }
    
    public static Stats getSorceressStats() {
-      return new Stats(75, 5, .7, 25, 50, .3);
+      return new Stats(75, 5, .7, 25, 50, .3, 0.0, 25, 50);
    }
    
    public static Stats getThiefStats() {
-      return new Stats(75, 6, .8, 20, 40, .5);
+      return new Stats(75, 6, .8, 20, 40, .5, 0.0, 0, 0);
    }
    
+   public static Stats getOgreStats() {
+      return new Stats(200, 2, .6, 30, 50, 0.0, .1, 30, 50);
+   }
+   
+   public static Stats getSkeletonStats() {
+      return new Stats(100, 3, .8, 30, 50, 0.0, .3, 30, 50);
+   }
+   
+   public static Stats getGremlinStats() {
+      return new Stats(70, 5, .8, 15, 30, 0.0, .4, 20, 40);
+   }   
 }
