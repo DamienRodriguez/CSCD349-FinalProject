@@ -6,6 +6,9 @@ public class Hero extends DungeonCharacter implements Attack{
 		super(name,stats);
 	}
    
+   public int getCurrentHP() {
+      return super.getCurrentHP();
+   }
    public String getName() {
       return super.getName();
    }

@@ -1,6 +1,6 @@
 public class Skeleton extends Monster {
 
-   public Ogre() {
+   public Skeleton() {
       super("Nameless Skeleton Warrior", Stats.getSkeletonStats());
    }
    

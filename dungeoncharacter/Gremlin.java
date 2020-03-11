@@ -1,6 +1,6 @@
 public class Gremlin extends Monster {
 
-   public Ogre() {
+   public Gremlin() {
       super("Slyn the Gremlin", Stats.getGremlinStats());
    }
    

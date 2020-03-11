@@ -11,7 +11,7 @@ public class Sorceress extends Hero {
         
         hp = (int) (Math.random() * (healVariance[1] - healVariance[0] + 1)) + healVariance[0];
         super.addHP(hp);
-        System.out.println(super.getName() + " added [" + hp + "] points.\n" + "Total hit points remaining are: " + super.getStats().getCurrentHP());
+        System.out.println(super.getName() + " added [" + hp + "] points.\n" + "Current health points remaining are: " + super.getCurrentHP());
         System.out.println();
     }
    
