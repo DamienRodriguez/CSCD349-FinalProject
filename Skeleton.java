@@ -1,7 +1,7 @@
 public class Skeleton extends Monster {
 
    public Skeleton() {
-      super("Nameless Skeleton Warrior", Stats.getSkeletonStats());
+      super("Skeletor the Skeleton Warrior", Stats.getSkeletonStats());
    }
    
    @Override

@@ -18,7 +18,7 @@ public class Thief extends Hero {
    }
    
    public void attack(DungeonCharacter opponent) {
-        System.out.println(super.getName() + " swings a mighty sword at " + opponent.getName() + ":");
+        System.out.println(super.getName() + " stabs there knife at " + opponent.getName() + ":");
         super.attack(opponent);
     }
 
