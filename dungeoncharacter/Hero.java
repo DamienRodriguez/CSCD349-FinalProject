@@ -1,6 +1,7 @@
 public class Hero extends DungeonCharacter implements Attack{
 	
 	private int numTurns;
+	private int[] pots;
 
 	public Hero(final String name, final Stats stats) {
 		super(name,stats);
@@ -9,6 +10,7 @@ public class Hero extends DungeonCharacter implements Attack{
    public int getCurrentHP() {
       return super.getCurrentHP();
    }
+   
    public String getName() {
       return super.getName();
    }
@@ -52,5 +54,31 @@ public class Hero extends DungeonCharacter implements Attack{
       
       System.out.println("Number of turns this round is: " + getNumTurns());
    }
-//stuff goes here
+
+	public boolean hasPots() {
+		if(pots[0] == 0 && pots[1] == 0) {
+			System.out.println("You have no potions in your inventory.");
+			return false;
+		}
+		else if(pots[0] == 0) {
+			System.out.println("You have: " + this.pots[1] + " vision potions in your inventory.");
+			return true;
+		}
+		else if(pots[1] ==  0) {
+			System.out.println("You have: " + this.pots[0] + " healing potions in your inventory.");
+			return true;
+		}
+		else {
+			System.out.println("You have: " + this.pots[0] + " healing potions, and " + this.pots[1] + " vision potions in your inventory.");
+			return true;
+		}
+	}
+	
+	public void healthPot() {
+		int hp = Math.random(5,16);
+		if(hasPots()) {
+			System.out.println("You have drank the mighty red liquid of vigor! You have healed for: " + hp);
+			this.addHP(hp);
+		}
+	}
 }
