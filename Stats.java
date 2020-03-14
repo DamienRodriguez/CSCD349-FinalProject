@@ -9,12 +9,12 @@ public class Stats {
 	private int minHeal, maxHeal;
 	
    public Stats(final int healthPoints, final int attackSpeed, final double chanceToHit, final int minDamage, final int maxDamage, final double changeToBlock, final double chanceToHeal, final int minHeal, final int maxHeal) {
-      setHP(healthPoints);
+      	setHP(healthPoints);
 		setAS(attackSpeed);
 		setChanceToHit(chanceToHit);
 		setDamageVariance(minDamage,maxDamage);
 		setChanceToBlock(chanceToBlock);
-      setChanceToHeal(chanceToHeal);
+      	setChanceToHeal(chanceToHeal);
 		setHealVariance(minHeal,maxHeal);
    }
    
