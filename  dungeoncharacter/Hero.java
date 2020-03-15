@@ -1,15 +1,40 @@
 public class Hero extends DungeonCharacter implements Attack{
 	
 	private int numTurns;
+   private int[] inventory;
+   private int foundPillars;
 
 	public Hero(final String name, final Stats stats) {
 		super(name,stats);
+      setInitialInventory();
+      setInitialPillars();
 	}
    
    public String getName() {
       return super.getName();
    }
-	
+   
+   private void setInitialInventory() {
+      this.inventory = {0,0};
+   }
+   
+   private void setInitialPillars() {
+      this.foundPillars = 0;
+   }
+   
+   public int getCurrentPillars() {
+      return this.foundPillars;
+   }
+   
+   public void addPillar() {
+      this.foundPillars++;
+   }
+   
+   
+   public void getInventory() {
+      return this.inventory;
+   }
+   
 	public void setNumTurns(final int numTurns) {
 		this.numTurns = numTurns;
 	}
@@ -22,7 +47,7 @@ public class Hero extends DungeonCharacter implements Attack{
 		return Math.random() <= super.getStats().getChanceToBlock();
 	}
 	
-	public void subHP(final int hp) {
+   public void subHP(final int hp) {
 		if(defend()) {
 			System.out.println(super.getName() + " Blocked the attack!");
 		} 
@@ -39,6 +64,14 @@ public class Hero extends DungeonCharacter implements Attack{
 	public void attack(DungeonCharacter opponent) {
 		super.attack(opponent);
 	}
+   
+   public void addHealthPotion() {
+      this.inventory[0]++;
+   }
+   
+   public void addVisionPotion() {
+      this.inventory[1]++;
+   }
 
 
 	public void battleChoices(final DungeonCharacter opponent) {
@@ -54,9 +87,9 @@ public class Hero extends DungeonCharacter implements Attack{
 	public String toString() {
 		return "Hero name: "+getName()+"\n"
 				+"Hitpoints: "+getCurrentHP()+"\n"
-				+"Total Healing Potions: "+"\n"
-				+"Total Vision Potions: "+ "\n"
-				+"Total Pillars of OO Found: ";
+				+"Total Healing Potions: "+ this.inventory[0] + "\n"
+				+"Total Vision Potions: "+ this.inventory[1] +  "\n"
+				+"Total Pillars of OO Found: " + getFoundPillars();
 	}
 	//stuff goes here
 }
