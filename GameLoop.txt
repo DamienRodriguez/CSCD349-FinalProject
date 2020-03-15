@@ -1,0 +1,19 @@
+Game loop
+
+- Starting the game:
+	- Prints out the welcome message
+	- Creates a Dungeon Object(final int size of dungeon)
+		- Contains a matrix that tracks room locations, as well as coordinates for the hero
+		- We DO NOT CARE if multiple items are in the same room
+	- Creates user generated Hero Character
+	- Places the hero at the entrance of the dungeon
+	- Hero walks through dungeon
+	- If they walk into a room with an item, they pick it up.
+	- If they walk into a room with a monster, attack sequence starts automatically
+	- If they walk into a room with a pit, they loose health
+	- If they walk into a room with a pillar of OO, they 'collect' it
+		- display message when obtained
+	- If they walk into a room with exit
+		- display message if have all items needed or nah
+		- End of the game
+- End of Game
