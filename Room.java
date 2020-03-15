@@ -7,8 +7,9 @@ public class Room{
     private boolean hasHealthpotion = false;
     private boolean hasVisionPotion = false;
     private boolean hasPiller = false;
+    private int[] coordinates;
 
-    public Room(boolean hasMonster,boolean hasHealthpotion , boolean hasVisionPotion, boolean hasPiller,boolean hasEntrance,boolean hasExit){
+    public Room(boolean hasMonster,boolean hasHealthpotion , boolean hasVisionPotion, boolean hasPiller,boolean hasEntrance,boolean hasExit, int[] coordinates) {
         this.hasHealthpotion = hasHealthpotion;
         this.hasMonster=hasMonster;
         this.hasVisionPotion=hasVisionPotion;
@@ -16,6 +17,15 @@ public class Room{
         this.hasEntrance = hasEntrance;
         this.hasExit = hasExit;
     }
+    
+    public void setCoordinates(final int[] coordinates) {
+      this.coordinates = coordinates;
+    }
+    
+    public int[] getCoordinates() {
+      return this.coordinates;
+    }
+    
     public boolean getHasExit() {
         return hasExit;
     }
