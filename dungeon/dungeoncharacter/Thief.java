@@ -1,3 +1,4 @@
+package dungeoncharacter;
 import java.util.*;
 public class Thief extends Hero {
 

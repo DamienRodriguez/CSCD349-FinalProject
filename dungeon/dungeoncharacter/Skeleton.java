@@ -1,3 +1,4 @@
+package dungeoncharacter;
 public class Skeleton extends Monster {
 
    public Skeleton() {

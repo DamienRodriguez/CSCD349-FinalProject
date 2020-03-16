@@ -7,7 +7,7 @@ public class Room {
     private boolean hasHealthpotion = false;
     private boolean hasVisionPotion = false;
     private boolean hasPiller = false;
-    private boolean visited = true;
+    private boolean visited = false;
     private int[] coordinates;
 
     public Room(boolean hasMonster,boolean hasHealthPotion , boolean hasVisionPotion, int[] coordinates){
@@ -39,7 +39,7 @@ public class Room {
             if (arr[i])
                 numOfTrue++;
         }
-        if (numOfTrue == 1){
+        if (numOfTrue == 1) {
             if (getHasExit())
                 return 'O';
             else if (getHasEntrance())
@@ -52,7 +52,7 @@ public class Room {
                 return 'V';
             else if (getHasPillar())
                 return 'C';
-        }else if(numOfTrue > 1) {
+        } else if(numOfTrue > 1) {
             return 'M';
         }
 
@@ -109,6 +109,8 @@ public class Room {
         return this.coordinates;
     }
 
+
+    
     @Override
     public String toString() {
         isVisited(); //can only be drawn if it was visited.
@@ -117,29 +119,42 @@ public class Room {
         //Needs work when drawing out the room info.
         if(this.coordinates[1] == 0) { //left side
             if(this.coordinates[0] == 0)
-                return "* * *\n* "+c+" |\n* - *"; //upper corner
+                return "***%*"+c+"|%*-*"; //upper corner
+            
             else if(this.coordinates[0] == 4) //lower corner
-                return "* - *\n* "+c+" |\n* * *";
+                return "*-*%*"+c+"|%***";
+            
             else
-                return "* - *\n* "+c+" |\n* - *"; //West walls
+                return "*-*%*"+c+"|%*-*"; //West walls
         }
 
         else if(this.coordinates[1] == 4) { //right side
             if(this.coordinates[0] == 0)
-                return "* * *\n| "+c+" * \n* - *"; //upper corner
+                return "***%|"+c+"*%*-*"; //upper corner
             else if(this.coordinates[0] == 4) //lower corner
-                return "* - *\n| "+c+" *\n* * *";
+                return "*-*%|"+c+"*%***";
             else
-                return "* - *\n| "+c+" *\n* - *"; //East Wall
+                return "*-*%|"+c+"*%*-*"; //East Wall
         }
 
         else {
             if(this.coordinates[0] == 0) //North Wall
-                return " * *\n"+c+" |\n - *";
+                return "***%|"+c+"|%*-*";
             else if(this.coordinates[0] == 4) //South Wall
-                return " - *\n"+c+" |\n * *";
+                return "*-*%|"+c+"|%***";
             else
-                return " -  \n "+c+" \n  - ";
+                return "*-*%|"+c+"|%*-*"; //base room
         }
     }
+    
 }
+
+
+/*
+   We need to ahve the rooms return a string that is then modified and handled by the dungeon in terms of visibility purposes.
+   characters that are passed to us represent the doors, ie walls. the last is wht would rep. the room.
+   
+   Our print on dungeon would allow us to print out the appropriate bits.
+
+
+*/

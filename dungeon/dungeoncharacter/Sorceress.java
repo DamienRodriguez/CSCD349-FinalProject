@@ -1,30 +1,25 @@
+package dungeoncharacter;
 import java.util.*;
-public class Warrior extends Hero {
+public class Sorceress extends Hero {
 
-   public Warrior(final String name) {
-      super(name, Stats.getWarriorStats());
+   public Sorceress(final String name) {
+      super(name, Stats.getSorceressStats());
    }
    
-   public void crushingBlow(final DungeonCharacter opponent) {
-      int damage = 0;
-      
-      if(Math.random() <= .4) {
-         damage =  (int) (Math.random() * 76) + 100;
-         System.out.println(super.getName() + " lands a CRUSHING BLOW for " + damage + " damage!");
-         opponent.subHP(damage);
-         System.out.println();
-      }
-      else {
-            System.out.println(getName() + " failed to land a crushing blow");
-            System.out.println();
-      }
-   }
+   public void heal() {
+        int hp;
+        int[] healVariance = super.getStats().getHealVariance();
+        
+        hp = (int) (Math.random() * (healVariance[1] - healVariance[0] + 1)) + healVariance[0];
+        super.addHP(hp);
+        System.out.println(super.getName() + " added [" + hp + "] points.\n" + "Total hit points remaining are: " + super.getStats().getHP());
+        System.out.println();
+    }
    
    public void attack(DungeonCharacter opponent) {
-        System.out.println(super.getName() + " swings a mighty sword at " + opponent.getName() + ":");
+        System.out.println(super.getName() + " casts a spell of fireball at " + opponent.getName() + ":");
         super.attack(opponent);
     }
-
 
    public void battleChoices(DungeonCharacter opponent) {
         Scanner kb = new Scanner(System.in);
@@ -34,7 +29,7 @@ public class Warrior extends Hero {
 
         do {
             System.out.println("1. Attack Opponent");
-            System.out.println("2. Crushing Blow on Opponent");
+            System.out.println("2. Cast Heal");
             System.out.print("Choose an option: ");
             choice = kb.nextInt();
 
@@ -42,7 +37,7 @@ public class Warrior extends Hero {
                this.attack(opponent);
             }
             else if (choice == 2) {
-               this.crushingBlow(opponent);
+               this.heal();
             }
             else {
                System.out.println("invalid choice!");
@@ -53,4 +48,4 @@ public class Warrior extends Hero {
                 System.out.println("Number of turns remaining is: " + super.getNumTurns());
         } while (super.getNumTurns() > 0);
     }
-}
+ }

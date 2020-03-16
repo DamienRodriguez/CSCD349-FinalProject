@@ -1,3 +1,4 @@
+package dungeoncharacter;
 public class Gremlin extends Monster {
 
    public Gremlin() {
