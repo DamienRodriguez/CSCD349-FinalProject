@@ -80,7 +80,9 @@ public class DungeonAdventure {
         while(choice == 0){
           System.out.println("1.Warrior\n" +
                              "2.Sorceress\n" +
-                             "3.Thief\n->");
+                             "3.Thief\n"+
+                             "4.Cleric\n"+
+                             "5.Alchemist\n->");
           choice = Integer.parseInt(kb.nextLine());
           
         }

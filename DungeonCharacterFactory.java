@@ -7,6 +7,10 @@ public class DungeonCharacterFactory{
             return new Gremlin();
         else if(choice == 3)
             return new Skeleton();
+        else if(choice == 4)
+            return new Bugbear();
+        else if(choice == 5)
+            return new Goblin();
         return new Skeleton();
     }
 
@@ -17,6 +21,10 @@ public class DungeonCharacterFactory{
             return new Sorceress(name);
         else if(choice == 3)
             return new Thief(name);
+        else if(choice == 4)
+            return new Cleric(name);
+        else if(choice == 5)
+            return new Alchemist(name);
         return new Thief(name);
     }
 }
