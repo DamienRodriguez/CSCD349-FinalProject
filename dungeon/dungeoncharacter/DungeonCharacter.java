@@ -1,3 +1,4 @@
+package dungeoncharacter;
 public abstract class DungeonCharacter implements Attack {
 
 	private String name;

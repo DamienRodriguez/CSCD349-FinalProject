@@ -1,3 +1,4 @@
+package dungeoncharacter;
 public class Hero extends DungeonCharacter implements Attack{
 
 	private int numTurns;
@@ -68,9 +69,17 @@ public class Hero extends DungeonCharacter implements Attack{
 	public void addHealthPotion() {
 		this.inventory[0]++;
 	}
+   
+   public void useHealthPotion() {
+      this.inventory[0]--;
+   }
 
 	public void addVisionPotion() {
 		this.inventory[1]++;
+	}
+   
+   public void useVisionPotion() {
+		this.inventory[1]--;
 	}
 
 

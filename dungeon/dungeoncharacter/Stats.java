@@ -1,3 +1,4 @@
+package dungeoncharacter;
 public class Stats {
 
 	private int healthPoints;
