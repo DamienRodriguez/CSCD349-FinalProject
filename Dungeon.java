@@ -123,96 +123,57 @@ public final class Dungeon {
 
                 temp = pos[0];
                 pos[0] = temp - 1;
-                System.out.println(pos[0] + " , " + pos[1]);
-                dungeon[pos[0]][pos[1]].isVisited();
-                if (dungeon[pos[0]][pos[1]].getHasPit()) {
-                    player.subHP(20);
-                } else if (dungeon[pos[0]][pos[1]].getHasMonster()) {
-                    int rand = randomNum();
-                    battle(player, factory.createMonster(rand * ((3 - 1) + 1)));
-                }
-                if (player.getCurrentHP() > 0)
-                    if (dungeon[pos[0]][pos[1]].getHasPillar()) {
-                        player.addPillar();
-                        dungeon[pos[0]][pos[1]].setHasPillar(false);
-                    } else if (dungeon[pos[0]][pos[1]].getHasHealthPotion()) {
-                        player.addHealthPotion();
-                        dungeon[pos[0]][pos[1]].setHasHealthPotion(false);
-                    } else if (dungeon[pos[0]][pos[1]].getHasVisionPotion()) {
-                        player.addVisionPotion();
-                        dungeon[pos[0]][pos[1]].setHasVisionPotion(false);
-                    } else if (player.getFoundPillars() == 4 && dungeon[pos[0]][pos[1]].getHasExit()) {
-                    }
-
-
+                roomInteractions(player,factory);
         }else if(i==2 && pos[0]<4){//move down
 
             temp= pos[0];
             pos[0]=temp+1;
-            dungeon[pos[0]][pos[1]].isVisited();
-            System.out.println(pos[0]+" , "+pos[1]);
-            dungeon[pos[0]][pos[1]].isVisited();
-            if (dungeon[pos[0]][pos[1]].getHasPit()) {
-                player.subHP(20);
-            } else if (dungeon[pos[0]][pos[1]].getHasMonster()) {
-                int rand = randomNum();
-                battle(player, factory.createMonster(rand * ((3 - 1) + 1)));
-            }
-            if (player.getCurrentHP() > 0)
-                if (dungeon[pos[0]][pos[1]].getHasPillar()) {
-                    player.addPillar();
-                    dungeon[pos[0]][pos[1]].setHasPillar(false);
-                } else if (dungeon[pos[0]][pos[1]].getHasHealthPotion()) {
-                    player.addHealthPotion();
-                    dungeon[pos[0]][pos[1]].setHasHealthPotion(false);
-                } else if (dungeon[pos[0]][pos[1]].getHasVisionPotion()) {
-                    player.addVisionPotion();
-                    dungeon[pos[0]][pos[1]].setHasVisionPotion(false);
-                }else if(player.getFoundPillars()==4 && dungeon[pos[0]][pos[1]].getHasExit()){}
+            roomInteractions(player,factory);
         }else if(i==3 && pos[1]<4){//move right
             temp= pos[1];
             pos[1]=temp+1;
-            dungeon[pos[0]][pos[1]].isVisited();
-            System.out.println(pos[0]+" , "+pos[1]);
-            dungeon[pos[0]][pos[1]].isVisited();
-            if (dungeon[pos[0]][pos[1]].getHasPit()) {
-                player.subHP(20);
-            } else if (dungeon[pos[0]][pos[1]].getHasMonster()) {
-                dungeon[pos[0]][pos[1]].setHasMonster(false);
-                int rand = randomNum();
-                battle(player, factory.createMonster(rand * ((3) + 1)));
+            roomInteractions(player,factory);
 
-            }
-            if (player.getCurrentHP() > 0)
-                if (dungeon[pos[0]][pos[1]].getHasPillar()) {
-                    player.addPillar();
-                    dungeon[pos[0]][pos[1]].setHasPillar(false);
-                } else if (dungeon[pos[0]][pos[1]].getHasHealthPotion()) {
-                    player.addHealthPotion();
-                    dungeon[pos[0]][pos[1]].setHasHealthPotion(false);
-                } else if (dungeon[pos[0]][pos[1]].getHasVisionPotion()) {
-                    player.addVisionPotion();
-                    dungeon[pos[0]][pos[1]].setHasVisionPotion(false);
-                }else if(player.getFoundPillars()==4 && dungeon[pos[0]][pos[1]].getHasExit()){}
-        }else if(i==4 && pos[1]>0){//move left
+        }else if(i==4 && pos[1]>0) {//move left
             temp = pos[1];
-            pos[1]=temp-1;;
+            pos[1] = temp - 1;
+            roomInteractions(player,factory);
+
+        }else
+            System.out.println("you should not have gotten here.");
+    }
+
+    private void roomInteractions(Hero player, DungeonCharacterFactory factory) {
             dungeon[pos[0]][pos[1]].isVisited();
             System.out.println(pos[0]+" , "+pos[1]);
             dungeon[pos[0]][pos[1]].isVisited();
             if (dungeon[pos[0]][pos[1]].getHasPit()) {
-                System.out.println("you fall into a deap pit you take 20 damage");
+                System.out.println("You fall into a deep pit you take 20 damage");
                 player.subHP(20);
             } else if (dungeon[pos[0]][pos[1]].getHasMonster()) {
-                System.out.println("you ran into a monster get ready for battle!");
+                System.out.println("You ran into a monster get ready for battle!");
                 int rand = randomNum();
                 battle(player, factory.createMonster(rand * ((3 - 1) + 1)));
             }
             if (player.getCurrentHP() > 0) {
                 if (dungeon[pos[0]][pos[1]].getHasPillar()) {
-                    System.out.println("you found a Piller of OO");
+                    System.out.println("You found a Piller of OO");
                     player.addPillar();
                     dungeon[pos[0]][pos[1]].setHasPillar(false);
+                    if(player.getFoundPillars()==1){
+                        System.out.println("Abstraction: the pillar of hiding information.");
+                    }else if(player.getFoundPillars()==2){
+                        System.out.println("Polymorphism: the pillar redefining methods.");
+                    }else if(player.getFoundPillars()==3){
+                        System.out.println("Inheritance: the pillar that allows new\n" +
+                                            " objects to take on properties of\n" +
+                                            " existing objects.");
+                    }else if(player.getFoundPillars()==4){
+                        System.out.println("Encapsulation: the pillar for the binding\n" +
+                                            " of data and functions together keeping\n" +
+                                            " them safe from outside interference and use.");
+                        System.out.println("you found A.P.I.E.! go look for the exit!");
+                    }
                 }
                 if (dungeon[pos[0]][pos[1]].getHasHealthPotion()) {
                     System.out.println("You found a health potion!");
@@ -228,8 +189,7 @@ public final class Dungeon {
                     System.out.println("This is the exit! You won!");
                 }
             }
-        }else
-            System.out.println("you should not have gotten here.");
+
     }
 
     public static void battle(Hero theHero, Monster theMonster) {
