@@ -1,22 +1,23 @@
 package dungeoncharacter;
 import java.util.*;
-public class Sorceress extends Hero {
+public class Cleric extends Hero {
 
-   public Sorceress(final String name) {
+   public Cleric(final String name) {
       super(name, Stats.getSorceressStats());
    }
    
-   public void iceBlast(DungeonCharacter opponent) {
+   public void heal() {
+        int hp;
+        int[] healVariance = super.getStats().getHealVariance();
         
-        System.out.println(super.getName() + " casts Ice Blast at " + opponent.getName() + ":");
-        super.attack(opponent);
-        System.out.println("The enemy is slowed down and an extra turn is added.");
-        super.setNumTurns(getNumTurns() + 1);
+        hp = (int) (Math.random() * (healVariance[1] - healVariance[0] + 1)) + healVariance[0];
+        super.addHP(hp);
+        System.out.println(super.getName() + " added [" + hp + "] points.\n" + "Total hit points remaining are: " + super.getStats().getHP());
         System.out.println();
     }
    
    public void attack(DungeonCharacter opponent) {
-        System.out.println(super.getName() + " casts a spell of fireball at " + opponent.getName() + ":");
+        System.out.println(super.getName() + " brings a mace down to smite " + opponent.getName() + ":");
         super.attack(opponent);
     }
 
@@ -28,7 +29,7 @@ public class Sorceress extends Hero {
 
         do {
             System.out.println("1. Attack Opponent");
-            System.out.println("2. Cast Ice Blast");
+            System.out.println("2. Cast Heal");
             System.out.print("Choose an option: ");
             choice = kb.nextInt();
 
@@ -36,7 +37,7 @@ public class Sorceress extends Hero {
                this.attack(opponent);
             }
             else if (choice == 2) {
-               this.iceBlast(opponent);
+               this.heal();
             }
             else {
                System.out.println("invalid choice!");
