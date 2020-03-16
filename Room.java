@@ -1,75 +1,224 @@
-package dungeonFinal;
+package finalProject;
 import java.util.Random;
+// Hewr Tarkhany
+
 
 public class Room {
-	private int healingPotion;
-	private int pitDamage ;
+	private boolean monster ;
+	private boolean healingPotion;
+	private boolean pitDamage ;
 	private boolean exit;
 	private boolean Entrance;
-	private int fourPillarsOO;
+	private boolean fourPillarsOO;
 	private boolean vision;
+	private final String SN ="*-*";
+	private final String EW = "|";
 	
+	// creating an array for wal side numbers 
+	private int [] walls;
 	
-	public Room(boolean Entrance,int healing,int damage,int pillar,boolean exit,boolean entrance,boolean vision) {
-		this.pitDamage= rand(1,20);
-		this.healingPotion= rand(5,15);
-		this.exit=exit ;
-		this.Entrance=entrance;
-		this.vision=vision;
-		this.fourPillarsOO=pillar;
+	// room constructor 
+	public Room() {
+		
+		setHealingPotion(healingPotion);
+		setPitDamage(pitDamage);
+		setMonster(this.monster);
+		setPitDamage(this.pitDamage);
+		setExit(exit);
+		setEntrance(Entrance);
+		setFourPillarsOO(this.fourPillarsOO);
+		setVision(this.vision);
+		getSN();
+		getEW();
 		
 	}
 	
-	public int getHealingPotion() {
+	
+
+	
+
+
+
+	public boolean isMonster() {
+		return this.monster;
+	}
+
+
+
+
+
+
+	public void setMonster(boolean monster) {
+		this.monster = monster;
+	}
+
+
+
+
+
+
+	public boolean isHealingPotion() {
 		return healingPotion;
 	}
 
-	public int getPitDamage() {
+
+
+
+
+
+	public void setHealingPotion(boolean healingPotion) {
+		this.healingPotion = healingPotion;
+	}
+
+
+
+
+
+
+	public boolean isPitDamage() {
 		return pitDamage;
 	}
 
-	public boolean isExit() {
-		return exit = true;
+
+
+
+
+
+	public void setPitDamage(boolean pitDamage) {
+		this.pitDamage = pitDamage;
 	}
+
+
+
+
+
+
+	public boolean isExit() {
+		return exit;
+	}
+
+
+
+
+
+
+	public void setExit(boolean exit) {
+		this.exit = exit;
+	}
+
+
+
+
+
 
 	public boolean isEntrance() {
-		return Entrance= true;
+		return Entrance;
 	}
 
-	public int getFourPillarsOO() {
+
+
+
+
+
+	public void setEntrance(boolean entrance) {
+		Entrance = entrance;
+	}
+
+
+
+
+
+
+	public boolean isFourPillarsOO() {
 		return fourPillarsOO;
 	}
 
-	public void exit() {
-		if(isExit()) {
-			this.exit=true;
-			this.Entrance=false;
-			this.healingPotion=0;
-			this.pitDamage=0;
-			this.fourPillarsOO=0;
-		}
-		
+
+
+
+
+
+	public void setFourPillarsOO(boolean fourPillarsOO) {
+		this.fourPillarsOO = fourPillarsOO;
 	}
-	public void enterance() {
-		if(isEntrance()) {
-		this.exit =false;
-		this.Entrance=true;
-		this.healingPotion=0;
-		this.fourPillarsOO=0;
-		this.pitDamage=0;
-	}}
+
+
+
+
+
+
+	public boolean isVision() {
+		return vision;
+	}
+
+
+
+
+
+
+	public void setVision(boolean vision) {
+		this.vision = vision;
+	}
+
+
+
+
+
+
+	public String getSN() {
+		return SN;
+	}
+
+
+
+
+
+
+	public String getEW() {
+		return EW;
+	}
+
 	
-	public int rand(int start, int end) {
-		
-		Random rand = new Random();
-		int i= start;
-		for ( ;i<=end;i++ ) {
-			i= rand.nextInt();
+	public String roomItems() {
+		int counter=0;
+		boolean room [] = { isEntrance(),isExit(),isPitDamage(),isFourPillarsOO(),isHealingPotion()};
+		for (int x=0;x<room.length;x++) {
+			if(room[x]) {
+				counter++;
+			}
 		}
-		return i;
+		// count if there is one item in the roomm
+		
+		
+		do {
+			if(isEntrance()) {
+				return "I";
+			}
+			else if(isExit()) {
+				return "O";
+			}else if(isPitDamage()) {
+				return "P";
+			}
+			else if(isFourPillarsOO()) {
+				return "F";
+			}else if(isHealingPotion())
+				return "H";
+			
+			
+		}while(counter==1);
+		
+		if(counter >1) {
+			return "M";
+		}
+		return " ";
+		
 	}
-	public String toString() {
-		String str =null;
-		return str;
+	/// still working on it  
+	public String toString(){
+		String [][] str = new String[5][5];
+		
+		
+		return null ;
+		
 	}
 }
