@@ -1,18 +1,33 @@
 package dungeoncharacter;
 import java.util.*;
-public class Sorceress extends Hero {
+public class Alchemist extends Hero {
 
-   public Sorceress(final String name) {
+   public Alchemist(final String name) {
       super(name, Stats.getSorceressStats());
    }
    
-   public void iceBlast(DungeonCharacter opponent) {
+   public void createHealthPotion() {
         
-        System.out.println(super.getName() + " casts Ice Blast at " + opponent.getName() + ":");
-        super.attack(opponent);
-        System.out.println("The enemy is slowed down and an extra turn is added.");
-        super.setNumTurns(getNumTurns() + 1);
-        System.out.println();
+        System.out.println(super.getName() + " attempts to create a health potion!.");
+        if(Math.random() < .4) {
+           super.addHealthPotion();
+           System.out.println("Success!");
+        }
+        else {
+           System.out.println("Back to the mortal and pestle kid. Failure!");
+        }
+    }
+    
+    public void createVisionPotion() {
+        
+        System.out.println(super.getName() + " attempts to create a vision potion!.");
+        if(Math.random() < .05) {
+           super.addVisionPotion();
+           System.out.println("Success!");
+        }
+        else {
+           System.out.println("Back to the mortal and pestle kid. Failure!");
+        }
     }
    
    public void attack(DungeonCharacter opponent) {
@@ -28,7 +43,8 @@ public class Sorceress extends Hero {
 
         do {
             System.out.println("1. Attack Opponent");
-            System.out.println("2. Cast Ice Blast");
+            System.out.println("2. Create a Health Potion");
+            System.out.println("3. Create a Vision Potion");
             System.out.print("Choose an option: ");
             choice = kb.nextInt();
 
@@ -36,8 +52,13 @@ public class Sorceress extends Hero {
                this.attack(opponent);
             }
             else if (choice == 2) {
-               this.iceBlast(opponent);
+               this.createHealthPotion();
             }
+            
+            else if (choice == 3) {
+               this.createVisionPotion();
+            }
+            
             else {
                System.out.println("invalid choice!");
             }
