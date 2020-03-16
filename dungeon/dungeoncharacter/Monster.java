@@ -29,7 +29,7 @@ public abstract class Monster extends DungeonCharacter implements Attack {
    }
    
    public void attack(DungeonCharacter opponent) {
-      //under construction
+      super.attack(opponent);
    }
 // stuff goes here
 }
