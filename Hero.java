@@ -7,7 +7,8 @@ public class Hero {
 	private int potion;
 	private int vision;
 	private int pillars;
-	
+	private int maximumHitPoints;
+
 	 public Hero(String name, int potion,int vision,int pillars) {
 		 this.name=name;
 		 this.potion=potion;
@@ -15,7 +16,12 @@ public class Hero {
 		 this.pillars=pillars;
 		 
 	 }
-
+	public boolean alive() {
+		
+		return maximumHitPoints>0;
+	}
+	
+	// GETTERS AND SETTER 
 	public String getName() {
 		return name;
 	}
@@ -47,10 +53,20 @@ public class Hero {
 	public void setPillars(int pillars) {
 		this.pillars = pillars;
 	}
+	public int getMaximumHitPoints() {
+		return maximumHitPoints;
+	}
+	public void setMaximumHitPoints(int maximumHitPoints) {
+		this.maximumHitPoints = maximumHitPoints;
+	}
+	
+	// END OF GETTER AND SETTERS 
+	
 	public String toString() {
-		return "Hero's name: "+ getName()+ " Hero's Potion numbers: "
+		return "Hero's name: "+ getName()+ " Maximum Hit Points: "+this.getMaximumHitPoints()+" Hero's Potion numbers: "
 	           +getPotion()+" Hero's Vision: "+ getVision()+
 	           " Pillars that Hero collected: "+ getPillars();
 	}
+	
 	
 }
