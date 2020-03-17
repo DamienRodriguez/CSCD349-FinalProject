@@ -4,6 +4,7 @@ import java.util.Scanner;
 public final class Dungeon {
     private Room[][] dungeon;
     private int[] pos, exitPos;
+    
     public Dungeon(int dungeon_size) {
 
         Room[][] dungeon = new Room[dungeon_size][dungeon_size];
