@@ -1,10 +1,9 @@
-public class Hero extends DungeonCharacter implements Attack {
+public abstract class Hero extends DungeonCharacter implements Attack {
 
 	private int numTurns;
 	private int[] inventory;
 	private int foundPillars;
-   private int currentHP;
-
+   
 	public Hero(final String name, final Stats stats) {
 		super(name,stats);
 		setInitialInventory();

@@ -6,6 +6,9 @@ public class Thief extends Hero {
    }
    
    public void sneakAttack(final DungeonCharacter opponent) {
+      if(opponent == null)
+         throw new IllegalArgumentExeception("Opponent parmesan was passed as null.");
+         
       double surprise = Math.random();
       if (surprise <= .4) {
          System.out.println("Surprise attack was successful!\n" + getName() + " gets an additional turn.");
@@ -18,12 +21,18 @@ public class Thief extends Hero {
    }
    
    public void attack(DungeonCharacter opponent) {
+        if(opponent == null)
+           throw new IllegalArgumentExeception("Opponent parmesan was passed as null.");
+         
         System.out.println(super.getName() + " stabs there knife at " + opponent.getName() + ":");
         super.attack(opponent);
     }
 
 
    public void battleChoices(DungeonCharacter opponent) {
+        if(opponent == null)
+           throw new IllegalArgumentExeception("Opponent parmesan was passed as null.");
+         
         Scanner kb = new Scanner(System.in);
         int choice;
 
@@ -49,5 +58,6 @@ public class Thief extends Hero {
             if (super.getNumTurns() > 0)
                 System.out.println("Number of turns remaining is: " + super.getNumTurns());
         } while (super.getNumTurns() > 0);
+        kb.close();
     }
  }

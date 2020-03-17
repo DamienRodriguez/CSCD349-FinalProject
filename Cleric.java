@@ -16,11 +16,17 @@ public class Cleric extends Hero {
     }
 
     public void attack(DungeonCharacter opponent) {
+        if(opponent == null)
+            throw new IllegalArgumentExeception("Opponent parmesan was passed as null.");
+            
         System.out.println(super.getName() + " brings a mace down to smite " + opponent.getName() + ":");
         super.attack(opponent);
     }
 
     public void battleChoices(DungeonCharacter opponent) {
+        if(opponent == null)
+            throw new IllegalArgumentExeception("Opponent parmesan was passed as null.");
+            
         Scanner kb = new Scanner(System.in);
         int choice;
 
@@ -46,5 +52,6 @@ public class Cleric extends Hero {
             if (super.getNumTurns() > 0)
                 System.out.println("Number of turns remaining is: " + super.getNumTurns());
         } while (super.getNumTurns() > 0);
+        kb.close();
     }
 }

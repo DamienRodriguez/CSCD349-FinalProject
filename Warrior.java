@@ -6,6 +6,9 @@ public class Warrior extends Hero {
    }
    
    public void crushingBlow(final DungeonCharacter opponent) {
+      if(opponent == null)
+         throw new IllegalArgumentExeception("Opponent parmesan was passed as null.");
+   
       int damage = 0;
       
       if(Math.random() <= .4) {
@@ -21,12 +24,18 @@ public class Warrior extends Hero {
    }
    
    public void attack(DungeonCharacter opponent) {
+        if(opponent == null)
+            throw new IllegalArgumentExeception("Opponent parmesan was passed as null.");
+           
         System.out.println(super.getName() + " swings a mighty sword at " + opponent.getName() + ":");
         super.attack(opponent);
     }
 
 
    public void battleChoices(DungeonCharacter opponent) {
+        if(opponent == null)
+            throw new IllegalArgumentExeception("Opponent parmesan was passed as null.");
+         
         Scanner kb = new Scanner(System.in);
         int choice;
 
@@ -52,5 +61,7 @@ public class Warrior extends Hero {
             if (super.getNumTurns() > 0)
                 System.out.println("Number of turns remaining is: " + super.getNumTurns());
         } while (super.getNumTurns() > 0);
+        
+        kb.close();
     }
 }
