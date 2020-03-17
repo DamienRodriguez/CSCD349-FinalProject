@@ -3,9 +3,10 @@ import java.util.Scanner;
 public final class Dungeon {
     private Room[][] dungeon;
     private int[] pos, exitPos;
+    private int size;
 
     public Dungeon(int dungeon_size) {
-
+        this.size =dungeon_size;
         Room[][] dungeon = new Room[dungeon_size][dungeon_size];
 
         for (int row = 0; row < dungeon_size; row++) {
@@ -13,10 +14,10 @@ public final class Dungeon {
                 dungeon[row][column] = makeRoom(row, column);
             }
         }
-
+        placePillars(dungeon);
         pos = setDungeonEntrance(dungeon);
         exitPos = setDungeonExit(dungeon);
-        placePillars(dungeon);
+
         setDungeon(dungeon);
 
     }
@@ -35,7 +36,7 @@ public final class Dungeon {
 
     private Room makeRoom(int x, int y) {
         int[] coords = new int[]{x, y};
-        return new Room(randomBool(), randomBool(), randomBool(), coords);
+        return new Room(randomBool(), randomBool(), randomBool(),randomBool(), coords);
     }
 
     private boolean randomBool() {
@@ -43,28 +44,49 @@ public final class Dungeon {
     }
 
     private int[] setDungeonExit(Room[][] dungeon) {
-        int row = 0;
-        int column = 0;
+        int row;
+        int column;
         do {
             row = randomNum();
             column = randomNum();
-            if (!dungeon[row][column].getHasEntrance())
+            if (!(dungeon[row][column].getHasEntrance()) || !(dungeon[row][column].getHasPillar())) {
                 dungeon[row][column].setHasExit(true);
+                dungeon[row][column].setHasMonster(false);
+                dungeon[row][column].setHasMonster(false);
+                dungeon[row][column].setHasVisionPotion(false);
+                dungeon[row][column].setHasHealthPotion(false);
+                dungeon[row][column].setHasPillar(false);
+                dungeon[row][column].setHasPit(false);
+            }
         } while (!dungeon[row][column].getHasExit());
         return new int[]{row, column};
     }
 
     private int[] setDungeonEntrance(Room[][] dungeon) {
-        int rand = randomNum();
-        dungeon[rand][rand].setHasEntrance(true);
-        dungeon[rand][rand].isVisited();
-        return new int[]{rand, rand};
+        int row;
+        int column;
+        do {
+            row = randomNum();
+            column = randomNum();
+            if (!(dungeon[row][column].getHasPillar())) {
+                dungeon[row][column].setHasEntrance(true);
+                dungeon[row][column].isVisited();
+                dungeon[row][column].setHasMonster(false);
+                dungeon[row][column].setHasMonster(false);
+                dungeon[row][column].setHasVisionPotion(false);
+                dungeon[row][column].setHasHealthPotion(false);
+                dungeon[row][column].setHasPillar(false);
+                dungeon[row][column].setHasPit(false);
+            }
+        }while(!(dungeon[row][column].getHasEntrance()));
+
+        return new int[]{row, column};
     }
 
     private void placePillars(Room[][] dungeon) {
         int pillars = 0;
-        int row = 0;
-        int column = 0;
+        int row;
+        int column;
         while (pillars != 4) {
             row = randomNum();
             column = randomNum();
@@ -80,7 +102,7 @@ public final class Dungeon {
         return (int) (random * ((4) + 1));
     }
 
-    private int randomMosterNum() {
+    private int randomMonsterNum() {
         double random = Math.random();
         return (int) (random * ((6) + 1));
     }
@@ -145,32 +167,31 @@ public final class Dungeon {
             roomInteractions(player, factory);
 
         } else
-            System.out.println("you should not have gotten here.");
+            System.out.println("invalid, its a wall...");
     }
 
     private void roomInteractions(Hero player, DungeonCharacterFactory factory) {
 
-        dungeon[pos[0]][pos[1]].isVisited();
+        this.dungeon[pos[0]][pos[1]].isVisited();
 
         System.out.println(pos[0] + " , " + pos[1]);
 
-        dungeon[pos[0]][pos[1]].isVisited();
+        this.dungeon[pos[0]][pos[1]].isVisited();
 
-        if (dungeon[pos[0]][pos[1]].getHasPit()) {
+        if (this.dungeon[pos[0]][pos[1]].getHasPit()) {
             System.out.println("You fall into a deep pit you take 20 damage");
             player.subHP(20);
 
-        } else if (dungeon[pos[0]][pos[1]].getHasMonster()) {
+        } else if (this.dungeon[pos[0]][pos[1]].getHasMonster()) {
             System.out.println("You ran into a monster get ready for battle!");
-            int rand = randomMosterNum();
-            battle(player, factory.createMonster(rand));
+            battle(player, factory.createMonster(randomMonsterNum()));
         }
 
         if (player.getCurrentHP() > 0) {
-            if (dungeon[pos[0]][pos[1]].getHasPillar()) {
+            if (this.dungeon[pos[0]][pos[1]].getHasPillar()) {
                 System.out.println("You found a Piller of OO");
                 player.addPillar();
-                dungeon[pos[0]][pos[1]].setHasPillar(false);
+                this.dungeon[pos[0]][pos[1]].setHasPillar(false);
                 if (player.getFoundPillars() == 1) {
                     System.out.println("Abstraction: the pillar of hiding information.");
                 } else if (player.getFoundPillars() == 2) {
@@ -186,18 +207,20 @@ public final class Dungeon {
                     System.out.println("you found A.P.I.E.! go look for the exit!");
                 }
             }
-            if (dungeon[pos[0]][pos[1]].getHasHealthPotion()) {
+            if (this.dungeon[pos[0]][pos[1]].getHasHealthPotion()) {
                 System.out.println("You found a health potion!");
                 player.addHealthPotion();
-                dungeon[pos[0]][pos[1]].setHasHealthPotion(false);
+                this.dungeon[pos[0]][pos[1]].setHasHealthPotion(false);
             }
-            if (dungeon[pos[0]][pos[1]].getHasVisionPotion()) {
+            if (this.dungeon[pos[0]][pos[1]].getHasVisionPotion()) {
                 System.out.println("You found a Vision potion!");
                 player.addVisionPotion();
-                dungeon[pos[0]][pos[1]].setHasVisionPotion(false);
+                this.dungeon[pos[0]][pos[1]].setHasVisionPotion(false);
             }
-            if (player.getFoundPillars() == 4 && dungeon[pos[0]][pos[1]].getHasExit()) {
+            if (player.getFoundPillars() == 4 && this.dungeon[pos[0]][pos[1]].getHasExit()) {
                 System.out.println("This is the exit! You won!");
+            }else if(this.dungeon[pos[0]][pos[1]].getHasExit()){
+                System.out.println("This is the exit... but you have not found all the \"Pillars of OO\"");
             }
         }
 
@@ -223,6 +246,14 @@ public final class Dungeon {
         else if (theHero.getCurrentHP() <= 0)
             System.out.println(theHero.getName() + " was defeated :-(");
         else
-            System.out.println("you didn't win you didn't lose... shouldn't have gotten here!");
+            System.out.println("you didn't win you didn't lose... you shouldn't have gotten here!");
+    }
+
+    public void allVisible() {
+        for(int row = 0; row < this.size; row++) {
+            for (int column = 0; column < this.size; column++) {
+                dungeon[row][column].isVisited();
+            }
+        }
     }
 }

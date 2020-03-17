@@ -30,7 +30,6 @@ public abstract class Hero extends DungeonCharacter implements Attack {
         this.foundPillars++;
     }
 
-
     public int[] getInventory() {
         return this.inventory;
     }
@@ -68,16 +67,28 @@ public abstract class Hero extends DungeonCharacter implements Attack {
     }
 
     public void useHealthPotion() {
-        this.inventory[0]--;
+        if(this.inventory[0] > 0) {
+            this.inventory[0]--;
+            this.addHP(15);
+        }else
+            System.out.println("You dont have any Health potions!");
     }
 
     public void addVisionPotion() {
         this.inventory[1]++;
     }
 
-    public void useVisionPotion() {
-        this.inventory[1]--;
+    public void useVisionPotion () {
+        if (this.inventory[1] > 0) {
+            this.inventory[1]--;
+            //do a thing that allows all the rooms near the player
+            //to be set to isVisible == true
+
+        } else
+            System.out.println("You don't have any vision potions!");
     }
+
+
 
 
     public void battleChoices(final DungeonCharacter opponent) {
@@ -88,7 +99,6 @@ public abstract class Hero extends DungeonCharacter implements Attack {
         if (getNumTurns() == 0) {
             setNumTurns(getNumTurns() + 1);
         }
-
         System.out.println("Number of turns this round is: " + getNumTurns());
     }
 
