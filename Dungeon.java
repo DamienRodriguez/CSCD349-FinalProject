@@ -144,17 +144,23 @@ public final class Dungeon {
     }
 
     private void roomInteractions(Hero player, DungeonCharacterFactory factory) {
+            
             dungeon[pos[0]][pos[1]].isVisited();
+            
             System.out.println(pos[0]+" , "+pos[1]);
+            
             dungeon[pos[0]][pos[1]].isVisited();
+            
             if (dungeon[pos[0]][pos[1]].getHasPit()) {
                 System.out.println("You fall into a deep pit you take 20 damage");
                 player.subHP(20);
+            
             } else if (dungeon[pos[0]][pos[1]].getHasMonster()) {
                 System.out.println("You ran into a monster get ready for battle!");
                 int rand = randomNum();
                 battle(player, factory.createMonster(rand * ((3 - 1) + 1)));
             }
+            
             if (player.getCurrentHP() > 0) {
                 if (dungeon[pos[0]][pos[1]].getHasPillar()) {
                     System.out.println("You found a Piller of OO");
@@ -207,9 +213,9 @@ public final class Dungeon {
 
         }
 
-        if (theMonster.getCurrentHP() == 0)
+        if (theMonster.getCurrentHP() <= 0)
             System.out.println(theHero.getName() + " was victorious!");
-        else if (theHero.getCurrentHP() == 0)
+        else if (theHero.getCurrentHP() <= 0)
             System.out.println(theHero.getName() + " was defeated :-(");
         else
             System.out.println("you won!");

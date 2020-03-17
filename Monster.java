@@ -26,11 +26,6 @@ public abstract class Monster extends DungeonCharacter implements Attack {
       super.subHP(hp);
       this.heal();
    }
-   
-   public void attack(DungeonCharacter opponent) {
-      //under construction
-   }
-// stuff goes here
 }
 
 

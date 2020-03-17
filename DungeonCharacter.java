@@ -55,12 +55,15 @@ public abstract class DungeonCharacter implements Attack {
       int[] dmgVar = this.stats.getDamageVariance();
 		
 		canAttack = Math.random() <= this.stats.getChanceToHit();
-		
+      
+      System.out.println("========================");
+      System.out.println(canAttack);
+		System.out.println("========================");
+      
 		if(canAttack) {
-			System.out.println(this.getName() + "'s attack connected with the " + opponent.getName());
 			damage = (int)(Math.random() * (dmgVar[0] - dmgVar[1] + 1)) + dmgVar[0];
+         System.out.println(this.getName() + "'s attack connected with: " + opponent.getName() + " dealing "+ damage);
 			opponent.subHP(damage);
-         System.out.println();
 			
 		} else {
 			System.out.println(this.getName() + "'s attack failed to connect with the " + opponent.getName());

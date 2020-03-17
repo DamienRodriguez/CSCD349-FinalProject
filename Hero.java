@@ -1,8 +1,9 @@
-public class Hero extends DungeonCharacter implements Attack{
+public class Hero extends DungeonCharacter implements Attack {
 
 	private int numTurns;
 	private int[] inventory;
 	private int foundPillars;
+   private int currentHP;
 
 	public Hero(final String name, final Stats stats) {
 		super(name,stats);
@@ -94,7 +95,7 @@ public class Hero extends DungeonCharacter implements Attack{
 	@Override
 	public String toString() {
 		return "Hero name: "+getName()+"\n"
-				+"Hitpoints: "+getCurrentHP()+"\n"
+				+"Hitpoints: "+super.getCurrentHP()+"\n"
 				+"Total Healing Potions: "+ this.inventory[0] + "\n"
 				+"Total Vision Potions: "+ this.inventory[1] +  "\n"
 				+"Total Pillars of OO Found: " + getFoundPillars();
