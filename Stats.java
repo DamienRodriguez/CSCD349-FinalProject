@@ -1,3 +1,4 @@
+
 public class Stats {
 
 	private int healthPoints;
@@ -72,7 +73,14 @@ public class Stats {
 	public static Stats getWarriorStats() {
 		return new Stats(125, 4, .8, 35, 60, .2, 0.0, 0, 0);
 	}
+	public static Stats getAlchemistStats() {
+	      return new Stats(68, 4, .6, 13, 28, 0.0, .6, 18, 50);
+	      
+     }
 
+	public static Stats getClericStats() {
+	      return new Stats(75, 4, .3, 19, 40, 0.0, .9, 30, 55);
+      }
 	public static Stats getSorceressStats() {
 		return new Stats(75, 5, .7, 25, 50, .3, 0.0, 25, 50);
 	}
@@ -92,4 +100,11 @@ public class Stats {
 	public static Stats getGremlinStats() {
 		return new Stats(70, 5, .8, 15, 30, 0.0, .4, 20, 40);
 	}
+	public static Stats getGoblinStats() {
+	      return new Stats(80, 7, .9, 16, 25, 0.0, .3, 22, 42);
+	      }
+	public static Stats getBugBearStats() {
+		      return new Stats(73, 8, .7, 13, 32, 0.0, .5, 16, 33);
+		      
+	   }
 }
