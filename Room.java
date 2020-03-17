@@ -10,14 +10,21 @@ public class Room {
     private boolean hasPit = false;
     private int[] coordinates;
 
-    public Room(boolean hasMonster, boolean hasHealthPotion, boolean hasVisionPotion, int[] coordinates) {
+    public Room(boolean hasMonster, boolean hasHealthPotion, boolean hasVisionPotion,boolean hasPit, int[] coordinates) {
         setHasExit(false);
         setHasEntrance(false);
-        setHasMonster(hasMonster);
-        setHasHealthPotion(hasHealthPotion);
-        setHasVisionPotion(hasVisionPotion);
-
-        setHasPillar(false);
+        boolean coin = true;
+        if (coin){
+            setHasMonster(hasMonster);
+            coin = false;
+            setHasHealthPotion(hasHealthPotion);
+            setHasVisionPotion(hasVisionPotion);
+        }else{
+            setHasPit(hasPit);
+            coin = true;
+            setHasHealthPotion(false);
+            setHasVisionPotion(false);
+        }
         setCoordinates(coordinates);
     }
 
@@ -53,10 +60,11 @@ public class Room {
                 return 'V';
             else if (getHasPillar())
                 return 'C';
+            else if(getHasPit())
+                return 'P';
         } else if (numOfTrue > 1) {
             return 'M';
         }
-
         return ' ';
     }
 

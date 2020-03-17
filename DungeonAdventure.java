@@ -51,7 +51,7 @@ public class DungeonAdventure {
             System.out.println(map.toString());
             System.out.println("______________________");
             System.out.println(player.toString());
-            System.out.println(map.getPos().toString());
+
             System.out.println("______________________");
 
 
@@ -82,7 +82,9 @@ public class DungeonAdventure {
                 player.useHealthPotion();
             } else if (choice == 6) {
                 player.useVisionPotion();
-            } else
+            }else if(choice == 42){                    // diagnostic tool as per spec
+                map.allVisible();
+            }else
                 System.out.println("invalid option please try again.");
 
         } while (player.getFoundPillars() != 4 && player.getCurrentHP() > 0 && map.getPos() != map.getExitPos());
