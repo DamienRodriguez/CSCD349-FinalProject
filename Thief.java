@@ -1,5 +1,5 @@
 import java.util.*;
-public class Thief extends Hero {
+public class Thief extends Hero implements Attack{
 
    public Thief(final String name) {
       super(name, Stats.getThiefStats());
@@ -16,6 +16,7 @@ public class Thief extends Hero {
          System.out.println("Uh oh! " + opponent.getName() + " saw you and blocked your attack!");
       }
    }
+   @Override
    
    public void attack(DungeonCharacter opponent) {
         System.out.println(super.getName() + " stabs there knife at " + opponent.getName() + ":");
@@ -49,5 +50,6 @@ public class Thief extends Hero {
             if (super.getNumTurns() > 0)
                 System.out.println("Number of turns remaining is: " + super.getNumTurns());
         } while (super.getNumTurns() > 0);
+        kb.close();
     }
  }

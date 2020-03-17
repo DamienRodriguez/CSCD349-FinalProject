@@ -1,4 +1,4 @@
-public class Goblin extends Monster {
+public class Goblin extends Monster implements Attack{
 
     public Goblin() {
         super("Tik the Goblin", Stats.getOgreStats());

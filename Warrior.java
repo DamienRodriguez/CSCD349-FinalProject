@@ -1,5 +1,5 @@
 import java.util.*;
-public class Warrior extends Hero {
+public class Warrior extends Hero implements Attack {
 
    public Warrior(final String name) {
       super(name, Stats.getWarriorStats());
@@ -19,7 +19,7 @@ public class Warrior extends Hero {
             System.out.println();
       }
    }
-   
+   @Override
    public void attack(DungeonCharacter opponent) {
         System.out.println(super.getName() + " swings a mighty sword at " + opponent.getName() + ":");
         super.attack(opponent);
@@ -36,6 +36,7 @@ public class Warrior extends Hero {
             System.out.println("1. Attack Opponent");
             System.out.println("2. Crushing Blow on Opponent");
             System.out.print("Choose an option: ");
+            
             choice = kb.nextInt();
 
             if(choice == 1) {
@@ -52,5 +53,6 @@ public class Warrior extends Hero {
             if (super.getNumTurns() > 0)
                 System.out.println("Number of turns remaining is: " + super.getNumTurns());
         } while (super.getNumTurns() > 0);
+        kb.close();
     }
 }

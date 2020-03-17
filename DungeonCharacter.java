@@ -9,7 +9,7 @@ public abstract class DungeonCharacter implements Attack {
 		if(name.isEmpty())
 			throw new IllegalArgumentException("Name parmesan in DungeonCharacter constructor was empty.");
 		if(name == null)
-			throw new NullPointerException("Name parmesan was passed in as null");
+			throw new IllegalArgumentException("Name parmesan was passed in as null");
 
 		setStats(stats);
 		setName(name);
