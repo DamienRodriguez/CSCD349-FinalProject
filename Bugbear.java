@@ -1,4 +1,4 @@
-public class Bugbear extends Monster {
+public class Bugbear extends Monster implements Attack {
 
     public Bugbear() {
         super("An'hek the Bugbear", Stats.getOgreStats());

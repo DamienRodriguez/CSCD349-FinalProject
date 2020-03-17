@@ -1,5 +1,5 @@
 import java.util.*;
-public class Cleric extends Hero {
+public class Cleric extends Hero implements Attack{
 
     public Cleric(final String name) {
         super(name, Stats.getSorceressStats());
@@ -14,7 +14,7 @@ public class Cleric extends Hero {
         System.out.println(super.getName() + " added [" + hp + "] points.\n" + "Total hit points remaining are: " + super.getStats().getHP());
         System.out.println();
     }
-
+@Override
     public void attack(DungeonCharacter opponent) {
         System.out.println(super.getName() + " brings a mace down to smite " + opponent.getName() + ":");
         super.attack(opponent);
@@ -46,5 +46,6 @@ public class Cleric extends Hero {
             if (super.getNumTurns() > 0)
                 System.out.println("Number of turns remaining is: " + super.getNumTurns());
         } while (super.getNumTurns() > 0);
+        kb.close();
     }
 }

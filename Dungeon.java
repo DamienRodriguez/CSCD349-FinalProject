@@ -1,4 +1,4 @@
-import java.util.Arrays;
+//import java.util.Arrays;
 import java.util.Scanner;
 
 public final class Dungeon {
@@ -220,5 +220,7 @@ public final class Dungeon {
             System.out.println(theHero.getName() + " was defeated :-(");
         else
             System.out.println("you won!");
+        
+        kb.close();
     }
 }

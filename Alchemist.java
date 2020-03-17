@@ -1,5 +1,5 @@
 import java.util.*;
-public class Alchemist extends Hero {
+public class Alchemist extends Hero implements Attack{
 
     public Alchemist(final String name) {
         super(name, Stats.getSorceressStats());
@@ -28,7 +28,7 @@ public class Alchemist extends Hero {
             System.out.println("Back to the mortal and pestle kid. Failure!");
         }
     }
-
+@Override
     public void attack(DungeonCharacter opponent) {
         System.out.println(super.getName() + " casts a spell of fireball at " + opponent.getName() + ":");
         super.attack(opponent);
@@ -66,5 +66,6 @@ public class Alchemist extends Hero {
             if (super.getNumTurns() > 0)
                 System.out.println("Number of turns remaining is: " + super.getNumTurns());
         } while (super.getNumTurns() > 0);
+        kb.close();
     }
 }
