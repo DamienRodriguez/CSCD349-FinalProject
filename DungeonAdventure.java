@@ -24,10 +24,14 @@ public class DungeonAdventure {
             System.out.println("Play again (y/n)?");
             playGame = kb.nextLine();
         } while(playGame.equals("y"));
+        
+        kb.close();
 
 
     }
     private static void gameMenu(Scanner kb,Hero player, Dungeon map,DungeonCharacterFactory factory){
+        if(kb == null || player == null || map == null || factory == null)
+            throw new IllegalArgumentExeception("Parmesan passed as null.");
         do {
             int choice = 0;
             System.out.println(map.toString());
