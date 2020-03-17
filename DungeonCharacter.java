@@ -8,8 +8,8 @@ public abstract class DungeonCharacter implements Attack {
 	public DungeonCharacter(final String name, final Stats stats) {
 		if(name.isEmpty())
 			throw new IllegalArgumentException("Name parmesan in DungeonCharacter constructor was empty.");
-		if(name == null)
-			throw new NullPointerException("Name parmesan was passed in as null");
+		if(name == null || stats == null)
+			throw new NullPointerException("Name or Stats parmesan was passed in as null");
 
 		setStats(stats);
 		setName(name);
@@ -41,7 +41,8 @@ public abstract class DungeonCharacter implements Attack {
    }
 	
 	public void addHP(final int hp) {
-		this.currentHP += hp;
+      if(super.getCurrentHP() > 0)
+		   this.currentHP += hp;
 	}
 	
 	public void subHP(final int hp) {
@@ -49,6 +50,8 @@ public abstract class DungeonCharacter implements Attack {
 	}
 	
 	public void attack(final DungeonCharacter opponent) {
+      if(opponent == null)
+         throw new IllegalArgumentException("Opponent parmesan was passed as null.");
 	
 		boolean canAttack = false;
 		int damage = 0;

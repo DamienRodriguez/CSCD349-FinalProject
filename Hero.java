@@ -84,6 +84,9 @@ public class Hero extends DungeonCharacter implements Attack {
 
 
 	public void battleChoices(final DungeonCharacter opponent) {
+      if(opponent == null)
+         throw new IllegalArgumentExeption("Opponent parmesan was passed as null.");
+         
 		setNumTurns(super.getStats().getAS() / opponent.getStats().getAS());
 		if(getNumTurns() == 0) {
 			setNumTurns(getNumTurns() + 1);
