@@ -10,7 +10,7 @@ public class Room {
     private boolean hasPit = false;
     private int[] coordinates;
 
-    public Room(boolean hasMonster,boolean hasHealthPotion , boolean hasVisionPotion, int[] coordinates){
+    public Room(boolean hasMonster, boolean hasHealthPotion, boolean hasVisionPotion, int[] coordinates) {
         setHasExit(false);
         setHasEntrance(false);
         setHasMonster(hasMonster);
@@ -53,12 +53,13 @@ public class Room {
                 return 'V';
             else if (getHasPillar())
                 return 'C';
-        } else if(numOfTrue > 1) {
+        } else if (numOfTrue > 1) {
             return 'M';
         }
 
         return ' ';
     }
+
     public void setHasExit(boolean hasExit) {
         this.hasExit = hasExit;
     }
@@ -70,6 +71,7 @@ public class Room {
     public void setHasEntrance(boolean hasEntrance) {
         this.hasEntrance = hasEntrance;
     }
+
     public boolean getHasMonster() {
         return hasMonster;
     }
@@ -124,33 +126,29 @@ public class Room {
         char c = whatIsInRoom();
 
         //Needs work when drawing out the room info.
-        if(this.coordinates[1] == 0) { //left side
-            if(this.coordinates[0] == 0)
-                return "***%*"+c+"|%*-*"; //upper corner
+        if (this.coordinates[1] == 0) { //left side
+            if (this.coordinates[0] == 0)
+                return "***%*" + c + "|%*-*"; //upper corner
 
-            else if(this.coordinates[0] == 4) //lower corner
-                return "*-*%*"+c+"|%***";
+            else if (this.coordinates[0] == 4) //lower corner
+                return "*-*%*" + c + "|%***";
 
             else
-                return "*-*%*"+c+"|%*-*"; //West walls
-        }
-
-        else if(this.coordinates[1] == 4) { //right side
-            if(this.coordinates[0] == 0)
-                return "***%|"+c+"*%*-*"; //upper corner
-            else if(this.coordinates[0] == 4) //lower corner
-                return "*-*%|"+c+"*%***";
+                return "*-*%*" + c + "|%*-*"; //West walls
+        } else if (this.coordinates[1] == 4) { //right side
+            if (this.coordinates[0] == 0)
+                return "***%|" + c + "*%*-*"; //upper corner
+            else if (this.coordinates[0] == 4) //lower corner
+                return "*-*%|" + c + "*%***";
             else
-                return "*-*%|"+c+"*%*-*"; //East Wall
-        }
-
-        else {
-            if(this.coordinates[0] == 0) //North Wall
-                return "***%|"+c+"|%*-*";
-            else if(this.coordinates[0] == 4) //South Wall
-                return "*-*%|"+c+"|%***";
+                return "*-*%|" + c + "*%*-*"; //East Wall
+        } else {
+            if (this.coordinates[0] == 0) //North Wall
+                return "***%|" + c + "|%*-*";
+            else if (this.coordinates[0] == 4) //South Wall
+                return "*-*%|" + c + "|%***";
             else
-                return "*-*%|"+c+"|%*-*"; //base room
+                return "*-*%|" + c + "|%*-*"; //base room
         }
     }
 

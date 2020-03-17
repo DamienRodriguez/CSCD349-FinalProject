@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.Scanner;
+
 public class Cleric extends Hero {
 
     public Cleric(final String name) {
@@ -16,17 +17,17 @@ public class Cleric extends Hero {
     }
 
     public void attack(DungeonCharacter opponent) {
-        if(opponent == null)
-            throw new IllegalArgumentExeception("Opponent parmesan was passed as null.");
-            
+        if (opponent == null)
+            throw new IllegalArgumentException("Opponent parmesan was passed as null.");
+
         System.out.println(super.getName() + " brings a mace down to smite " + opponent.getName() + ":");
         super.attack(opponent);
     }
 
     public void battleChoices(DungeonCharacter opponent) {
-        if(opponent == null)
-            throw new IllegalArgumentExeception("Opponent parmesan was passed as null.");
-            
+        if (opponent == null)
+            throw new IllegalArgumentException("Opponent parmesan was passed as null.");
+
         Scanner kb = new Scanner(System.in);
         int choice;
 
@@ -38,13 +39,11 @@ public class Cleric extends Hero {
             System.out.print("Choose an option: ");
             choice = kb.nextInt();
 
-            if(choice == 1) {
+            if (choice == 1) {
                 this.attack(opponent);
-            }
-            else if (choice == 2) {
+            } else if (choice == 2) {
                 this.heal();
-            }
-            else {
+            } else {
                 System.out.println("invalid choice!");
             }
 
@@ -52,6 +51,6 @@ public class Cleric extends Hero {
             if (super.getNumTurns() > 0)
                 System.out.println("Number of turns remaining is: " + super.getNumTurns());
         } while (super.getNumTurns() > 0);
-        kb.close();
+
     }
 }
