@@ -82,12 +82,14 @@ public class DungeonAdventure {
                 player.useHealthPotion();
             } else if (choice == 6) {
                 player.useVisionPotion();
+                map.visionUsed(map.getPos());
             }else if(choice == 42){                    // diagnostic tool as per spec
                 map.allVisible();
             }else
                 System.out.println("invalid option please try again.");
 
         } while (player.getFoundPillars() != 4 && player.getCurrentHP() > 0 && map.getPos() != map.getExitPos());
+        map.allVisible();
     }
 
     private static String characterName(Scanner kb) {

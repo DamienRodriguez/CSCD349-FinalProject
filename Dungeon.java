@@ -257,4 +257,16 @@ public final class Dungeon {
             }
         }
     }
+
+    public void visionUsed(int[] pos) {
+        for(int row = 0; row < this.size; row++) {
+            for (int column = 0; column < this.size; column++) {
+                if(row <= pos[0]+1 && row > pos[0]-1) {
+                    if (row <= pos[1] + 1 && row > pos[1] - 1) {
+                        dungeon[row][column].isVisited();
+                    }
+                }
+            }
+        }
+    }
 }

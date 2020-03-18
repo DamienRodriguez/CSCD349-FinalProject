@@ -1,10 +1,34 @@
-//import dungeon.*;
-public class DungeonTest {
-    public static void main(String[] args) {
-        Dungeon dungeon = new Dungeon(5);
-        System.out.print(dungeon.toString());
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 
+class DungeonTest {
+
+    @Test
+    void getExitPos() {
     }
 
+    @Test
+    void getPos() {
+    }
+
+    @Test
+    void setDungeon() {
+    }
+
+    @Test
+    void testToString() {
+    }
+
+    @Test
+    void movePlayer() {
+    }
+
+    @Test
+    void battle() {
+    }
+
+    @Test
+    void allVisible() {
+    }
 }
