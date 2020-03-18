@@ -11,20 +11,22 @@ public class Room {
     private int[] coordinates;
 
     public Room(boolean hasMonster, boolean hasHealthPotion, boolean hasVisionPotion,boolean hasPit, int[] coordinates) {
-        setHasExit(false);
-        setHasEntrance(false);
-        boolean coin = true;
-        if (coin){
-            setHasMonster(hasMonster);
-            coin = false;
+        if (hasMonster){
+            setHasMonster(true);
             setHasHealthPotion(hasHealthPotion);
             setHasVisionPotion(hasVisionPotion);
+
         }else{
-            setHasPit(hasPit);
-            coin = true;
-            setHasHealthPotion(false);
-            setHasVisionPotion(false);
+            if(hasPit) {
+                setHasPit(true);
+                setHasHealthPotion(false);
+                setHasVisionPotion(false);
+            }else{
+                setHasHealthPotion(hasHealthPotion);
+                setHasVisionPotion(hasVisionPotion);
+            }
         }
+
         setCoordinates(coordinates);
     }
 
@@ -41,10 +43,10 @@ public class Room {
     }
 
     private char whatIsInRoom() {
-        boolean[] arr = {getHasExit(), getHasEntrance(), getHasMonster(), getHasHealthPotion(), getHasVisionPotion(), getHasPillar()};
+        boolean[] arr = {getHasExit(), getHasEntrance(), getHasMonster(), getHasHealthPotion(), getHasVisionPotion(), getHasPillar(),getHasPit()};
         int numOfTrue = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i])
+        for (boolean b : arr) {
+            if (b)
                 numOfTrue++;
         }
         if (numOfTrue == 1) {
