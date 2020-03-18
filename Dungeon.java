@@ -36,12 +36,13 @@ public final class Dungeon {
 
     private Room makeRoom(int x, int y) {
         int[] coords = new int[]{x, y};
-        return new Room(randomBool(), randomBool(), randomBool(),randomBool(), coords);
+        return new Room(randomBool(0.6), randomBool(0.5),randomBool(0.7),randomBool(0.3), coords);
     }
 
-    private boolean randomBool() {
-        return (Math.random() < 0.5);
+    private boolean randomBool(double d) {
+        return (Math.random() < d);
     }
+
 
     private int[] setDungeonExit(Room[][] dungeon) {
         int row;
@@ -90,7 +91,7 @@ public final class Dungeon {
         while (pillars != 4) {
             row = randomNum();
             column = randomNum();
-            if (!dungeon[row][column].getHasEntrance() && !dungeon[row][column].getHasPillar()) {
+            if (!(dungeon[row][column].getHasEntrance()) && !(dungeon[row][column].getHasPillar())&&!(dungeon[row][column].getHasPit())){
                 dungeon[row][column].setHasPillar(true);
                 pillars++;
             }
