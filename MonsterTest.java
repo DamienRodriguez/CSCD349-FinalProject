@@ -1,9 +1,31 @@
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class MonsterTest {
 
     @Test
-    void heal() {
+    void setStats() {
+    }
+
+    @Test
+    void setName() {
+    }
+
+    @Test
+    void setCurrentHP() {
+    }
+
+    @Test
+    void getName() {
+    }
+
+    @Test
+    void getCurrentHP() {
+    }
+
+    @Test
+    void getStats() {
     }
 
     @Test
@@ -16,5 +38,17 @@ class MonsterTest {
 
     @Test
     void attack() {
+    }
+
+    @Test
+    void heal() {
+    }
+
+    @Test
+    void testAddHP() {
+    }
+
+    @Test
+    void testSubHP() {
     }
 }

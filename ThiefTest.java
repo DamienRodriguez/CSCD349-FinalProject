@@ -1,19 +1,23 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class ThiefTest {
 
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
+    @Test
+    void getName() {
     }
 
     @Test
-    void getName() {
+    void getFoundPillars() {
+    }
+
+    @Test
+    void addPillar() {
+    }
+
+    @Test
+    void getInventory() {
     }
 
     @Test
@@ -38,6 +42,22 @@ class ThiefTest {
 
     @Test
     void attack() {
+    }
+
+    @Test
+    void addHealthPotion() {
+    }
+
+    @Test
+    void useHealthPotion() {
+    }
+
+    @Test
+    void addVisionPotion() {
+    }
+
+    @Test
+    void useVisionPotion() {
     }
 
     @Test

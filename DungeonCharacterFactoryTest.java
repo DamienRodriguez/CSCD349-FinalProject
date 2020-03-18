@@ -2,17 +2,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AttackTest {
+class DungeonCharacterFactoryTest {
 
     @Test
-    void attack() {
+    void createMonster() {
     }
 
     @Test
-    void addHP() {
-    }
-
-    @Test
-    void subHP() {
+    void createHero() {
     }
 }

@@ -1,38 +1,106 @@
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 class HeroTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
+    void setStats() {
+    }
+
+    @Test
+    void setName() {
+    }
+
+    @Test
+    void setCurrentHP() {
+    }
+
+    @Test
     void getName() {
     }
 
-    @org.junit.jupiter.api.Test
-    void setNumTurns() {
+    @Test
+    void getCurrentHP() {
     }
 
-    @org.junit.jupiter.api.Test
-    void getNumTurns() {
+    @Test
+    void getStats() {
     }
 
-    @org.junit.jupiter.api.Test
-    void defend() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void subHP() {
-    }
-
-    @org.junit.jupiter.api.Test
+    @Test
     void addHP() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
+    void subHP() {
+    }
+
+    @Test
     void attack() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
+    void testGetName() {
+    }
+
+    @Test
+    void getFoundPillars() {
+    }
+
+    @Test
+    void addPillar() {
+    }
+
+    @Test
+    void getInventory() {
+    }
+
+    @Test
+    void setNumTurns() {
+    }
+
+    @Test
+    void getNumTurns() {
+    }
+
+    @Test
+    void defend() {
+    }
+
+    @Test
+    void testSubHP() {
+    }
+
+    @Test
+    void testAddHP() {
+    }
+
+    @Test
+    void testAttack() {
+    }
+
+    @Test
+    void addHealthPotion() {
+    }
+
+    @Test
+    void useHealthPotion() {
+    }
+
+    @Test
+    void addVisionPotion() {
+    }
+
+    @Test
+    void useVisionPotion() {
+    }
+
+    @Test
     void battleChoices() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testToString() {
     }
 }

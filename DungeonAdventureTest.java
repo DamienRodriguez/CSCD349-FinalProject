@@ -2,17 +2,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AttackTest {
+class DungeonAdventureTest {
 
     @Test
-    void attack() {
+    void main() {
     }
 
     @Test
-    void addHP() {
-    }
-
-    @Test
-    void subHP() {
+    void init() {
     }
 }

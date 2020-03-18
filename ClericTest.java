@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WarriorTest {
+class ClericTest {
 
     @Test
     void getName() {
@@ -105,7 +105,7 @@ class WarriorTest {
     }
 
     @Test
-    void crushingBlow() {
+    void heal() {
     }
 
     @Test
