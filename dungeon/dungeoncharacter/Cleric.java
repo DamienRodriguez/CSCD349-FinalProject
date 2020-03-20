@@ -1,3 +1,6 @@
+package dungeon.dungeoncharacter;
+
+
 import java.util.Scanner;
 
 public class Cleric extends Hero {

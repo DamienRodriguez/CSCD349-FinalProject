@@ -1,3 +1,5 @@
+package dungeon.dungeoncharacter;
+
 public interface Attack {
     void attack(final DungeonCharacter opponent);
 

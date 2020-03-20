@@ -1,3 +1,6 @@
+package dungeon.dungeoncharacter;
+
+
 public abstract class DungeonCharacter implements Attack {
 
     private String name;
@@ -59,10 +62,6 @@ public abstract class DungeonCharacter implements Attack {
         int[] dmgVar = this.stats.getDamageVariance();
 
         canAttack = Math.random() <= this.stats.getChanceToHit();
-
-        System.out.println("========================");
-        System.out.println(canAttack);
-        System.out.println("========================");
 
         if (canAttack) {
             damage = (int) (Math.random() * (dmgVar[0] - dmgVar[1] + 1)) + dmgVar[0];

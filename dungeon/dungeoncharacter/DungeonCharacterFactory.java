@@ -1,3 +1,5 @@
+package dungeon.dungeoncharacter;
+
 public class DungeonCharacterFactory {
 
     public Monster createMonster(final int choice) {

@@ -1,3 +1,5 @@
+package dungeon.dungeoncharacter;
+
 public abstract class Hero extends DungeonCharacter implements Attack {
 
     private int numTurns;

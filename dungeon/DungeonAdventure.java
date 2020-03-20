@@ -1,4 +1,7 @@
+package dungeon;
 import java.util.Scanner;
+import dungeon.dungeoncharacter.*;
+
 
 public class DungeonAdventure {
 

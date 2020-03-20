@@ -1,3 +1,6 @@
+package dungeon.dungeoncharacter;
+
+
 public class Bugbear extends Monster {
 
     public Bugbear() {

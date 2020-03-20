@@ -1,3 +1,6 @@
+package dungeon.dungeoncharacter;
+
+
 public abstract class Monster extends DungeonCharacter implements Attack {
 
     public Monster(final String name, final Stats stats) {

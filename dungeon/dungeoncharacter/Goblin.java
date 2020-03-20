@@ -1,3 +1,5 @@
+package dungeon.dungeoncharacter;
+
 public class Goblin extends Monster {
 
     public Goblin() {

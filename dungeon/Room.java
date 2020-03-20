@@ -1,3 +1,5 @@
+package dungeon;
+import dungeon.dungeoncharacter.*;
 public class Room {
 
     private boolean hasExit = false;

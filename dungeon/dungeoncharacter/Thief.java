@@ -1,3 +1,5 @@
+package dungeon.dungeoncharacter;
+
 import java.util.Scanner;
 
 public class Thief extends Hero {

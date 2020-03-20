@@ -1,3 +1,5 @@
+package dungeon;
+
 public class Items {
     private String ItemName;
     private String ItemType;

@@ -1,3 +1,5 @@
+package dungeon.dungeoncharacter;
+
 public class Ogre extends Monster {
 
     public Ogre() {
